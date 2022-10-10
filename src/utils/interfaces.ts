@@ -15,3 +15,9 @@ export interface User {
   classe: string;
   level: number;
 }
+
+export interface Order {
+  id: number;
+  userId: number;
+  productsIds: number[]
+}
