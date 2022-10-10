@@ -12,4 +12,8 @@ export default class ProductService {
   public async insert(name: string, amount: string): Promise<Product> {
     return this.model.insert(name, amount);
   }
+
+  public async getAll(): Promise<Product[]> {
+    return this.model.getAll();
+  }
 }
