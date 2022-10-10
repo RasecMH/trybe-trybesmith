@@ -16,14 +16,28 @@ export const productSchema = Joi.object({
 });
 
 export const userSchema = Joi.object({
-  displayName: Joi.string().required().min(8).messages({
-    'string.min': 'INVALIDDISPLAYNAMELENGTH',
+  username: Joi.string().required().min(3).messages({
+    'any.required': 'EMPTYUSERNAMEFIELD', 
+    'string.empty': 'EMPTYUSERNAMEFIELD', 
+    'string.base': 'USERNAMEFIELDNOTASTRING',
+    'string.min': 'USERNAMEFIELDLENGTH',
   }),
-  email: Joi.string().email().required().messages({
-    'string.email': 'INVALIDEMAILFIELD',
+  classe: Joi.string().required().min(3).messages({
+    'any.required': 'EMPTYCLASSEFIELD', 
+    'string.empty': 'EMPTYCLASSEFIELD', 
+    'string.base': 'CLASSEFIELDNOTASTRING',
+    'string.min': 'CLASSEFIELDLENGTH',
   }),
-  password: Joi.string().required().min(6).messages({
-    'string.min': 'INVALIDPASSWORDLENGTH',
+  level: Joi.number().required().min(1).messages({
+    'any.required': 'EMPTYLEVELFIELD', 
+    'number.empty': 'EMPTYLEVELFIELD', 
+    'number.base': 'LEVELFIELDNOTASTRING',
+    'number.min': 'LEVELFIELDLENGTH',
   }),
-  image: Joi.string().allow(null, ''),
+  password: Joi.string().required().min(8).messages({
+    'any.required': 'EMPTYPASSWORDFIELD', 
+    'string.empty': 'EMPTYPASSWORDFIELD', 
+    'string.base': 'PASSWORDFIELDNOTASTRING',
+    'string.min': 'PASSWORDFIELDLENGTH',
+  }),
 });
