@@ -1,4 +1,4 @@
-import { Pool, RowDataPacket } from 'mysql2/promise';
+import { Pool, RowDataPacket, ResultSetHeader } from 'mysql2/promise';
 import { Order } from '../utils/interfaces';
 
 export default class OrdersModel {
@@ -18,5 +18,19 @@ export default class OrdersModel {
         ORDER BY Trybesmith.Orders.userId
       `);
     return results as Order[];
+  }
+
+  public async insert(userId: number): Promise<number> {    
+    const [{ insertId }] = await this.connection
+      .execute<ResultSetHeader>('INSERT INTO Trybesmith.Orders(userId) VALUES (?)', [userId]);
+
+    return insertId;
+  }
+
+  public async update(productId: number, orderId: number) {
+    await this.connection.execute(
+      'UPDATE Trybesmith.Products SET orderId = ? WHERE id = ?',
+      [orderId, productId],
+    );
   }
 }

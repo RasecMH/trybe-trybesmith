@@ -41,3 +41,12 @@ export const userSchema = Joi.object({
     'string.min': 'PASSWORDFIELDLENGTH',
   }),
 });
+
+export const orderSchema = Joi.object({
+  productsIds: Joi.array().items(Joi.number()).required().messages({
+    'any.required': 'EMPTYPRODUCTSIDSFIELD', 
+    'array.empty': 'EMPTYPRODUCTSIDSFIELD', 
+    'array.base': 'PRODUCTSIDSFIELDNOTAARRAY',
+    'array.items': 'PRODUCTSIDSFIELDNOTANUMBERARRAY',
+  }),
+});

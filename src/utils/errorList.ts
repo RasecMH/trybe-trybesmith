@@ -71,6 +71,18 @@ const errorList = {
     status: 422,
     message: '"password" length must be at least 8 characters long',
   },
+  EMPTYPRODUCTSIDSFIELD: {
+    status: 400,
+    message: '"productsIds" is required',
+  },
+  PRODUCTSIDSFIELDNOTAARRAY: {
+    status: 422,
+    message: '"productsIds" must be an array',
+  },
+  PRODUCTSIDSFIELDNOTANUMBERARRAY: {
+    status: 422,
+    message: '"productsIds" must include only numbers',
+  },
 };
 
 export default errorList;

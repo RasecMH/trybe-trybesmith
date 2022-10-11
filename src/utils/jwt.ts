@@ -7,14 +7,14 @@ export const createToken = async (payload: User) => jwt.sign(payload, 'MinhaSenh
   algorithm: 'HS256',
 });
 
-export const validateToken = async (token: string) => {
-  if (!token) throw new HttpError(403, 'unauthorized');
+export const validateToken = async (token: string | undefined) => {
+  if (!token) throw new HttpError(401, 'Token not found');
 
   try {
     return jwt.verify(token, 'MinhaSenhaSecreta');
   } catch (error) {
     if (error instanceof Error) {
-      throw new HttpError(401, error.message);
+      throw new HttpError(401, 'Invalid token');
     }
   }
 };
