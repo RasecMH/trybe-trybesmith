@@ -9,7 +9,7 @@ export default class UsersController {
     const { username, classe, level, password } = req.body;
     
     const newUser = await this.usersService.insert(username, classe, level, password);
-    const token = await createToken(newUser);
+    const token = await createToken({ id: newUser.id });
     res.status(201).json({ token });
   };
 }

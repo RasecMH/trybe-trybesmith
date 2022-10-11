@@ -13,6 +13,6 @@ export default class OrdersController {
     const { productsIds, userId } = req.body;
 
     await this.ordersService.create(productsIds, userId.id);
-    return res.status(201).json({ userId, productsIds });
+    return res.status(201).json({ userId: userId.id, productsIds });
   };
 }

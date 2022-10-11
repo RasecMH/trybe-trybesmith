@@ -7,6 +7,7 @@ import HttpError from '../utils/http.error';
 const validateOrdersFields = (req: Request, res: Response, next: NextFunction) => {
   const { productsIds } = req.body;
   const { error } = orderSchema.validate({ productsIds });
+  console.log(error);
   
   if (error) {
     const { status, message } = (errorList as Record<string, ErrorObj>)[error.message];

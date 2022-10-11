@@ -9,10 +9,7 @@ export default class LoginController {
     const { username, password } = req.body;
     
     const payload = await this.loginService.login(username, password);
-    const token = await createToken({ id: payload.id, 
-      username,
-      classe: payload.classe,
-      level: payload.level });
+    const token = await createToken({ id: payload.id });
     res.status(200).json({ token });
   };
 }

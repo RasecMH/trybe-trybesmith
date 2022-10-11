@@ -54,10 +54,10 @@ export const loginSchema = Joi.object({
 });
 
 export const orderSchema = Joi.object({
-  productsIds: Joi.array().items(Joi.number()).required().messages({
+  productsIds: Joi.array().items(Joi.number().required()).required().messages({
     'any.required': 'EMPTYPRODUCTSIDSFIELD', 
     'array.empty': 'EMPTYPRODUCTSIDSFIELD', 
     'array.base': 'PRODUCTSIDSFIELDNOTAARRAY',
-    'array.items': 'PRODUCTSIDSFIELDNOTANUMBERARRAY',
+    'array.includesRequiredUnknowns': 'PRODUCTSIDSFIELDNOTANUMBERARRAY',
   }),
 });
