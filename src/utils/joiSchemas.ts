@@ -42,6 +42,17 @@ export const userSchema = Joi.object({
   }),
 });
 
+export const loginSchema = Joi.object({
+  username: Joi.string().required().messages({
+    'any.required': 'EMPTYUSERNAMEFIELD', 
+    'string.empty': 'EMPTYUSERNAMEFIELD', 
+  }),
+  password: Joi.string().required().messages({
+    'any.required': 'EMPTYPASSWORDFIELD', 
+    'string.empty': 'EMPTYPASSWORDFIELD', 
+  }),
+});
+
 export const orderSchema = Joi.object({
   productsIds: Joi.array().items(Joi.number()).required().messages({
     'any.required': 'EMPTYPRODUCTSIDSFIELD', 
